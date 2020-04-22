@@ -29,8 +29,11 @@ Route::resource('contact','ContactController');
 
 //Ajax Routes Start
 Route::group([], function(){
-  Route::resource('/basket', 'BasketController')->middleware('auth');
-  Route::get('/product', 'BasketController@store');
+    Route::resource('/basket', 'BasketController')->middleware('auth');
+//  Route::get('/product', 'BasketController@store')->middleware('auth');
+    Route::resource('/favorite', 'FavoriteController')->middleware('auth');
+    Route::resource('/factor', 'FactorController')->middleware('auth');
+    Route::get('/download/{id}', 'DownloadController@download');
 });
 
 

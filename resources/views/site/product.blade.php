@@ -40,19 +40,18 @@
         <h3>{{$pro->name}}</h3>
         <div class="rating d-flex">
           <p class="text-left mr-4">
-            <a href="#" class="mr-2">5.0</a>
-            <a href="#"><span class="ion-ios-star-outline"></span></a>
-            <a href="#"><span class="ion-ios-star-outline"></span></a>
-            <a href="#"><span class="ion-ios-star-outline"></span></a>
-            <a href="#"><span class="ion-ios-star-outline"></span></a>
-            <a href="#"><span class="ion-ios-star-outline"></span></a>
+            <a href="#" class="mr-2">امتیاز {{round($rating, 2)}} از ۵  </a>
           </p>
-          <p class="text-left mr-4">
-            <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">رای</span></a>
-          </p>
+            
+           
+            <p class="text-left mr-4">
+                <a href="#" class="mr-2" style="color: #000;">{{count($pro->ratings)}}<span style="color: #bbb;">رای</span></a>
+            </p>
+          
           <p class="text-left">
-            <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">فروخته شده</span></a>
+            <a href="#" class="mr-2" style="color: #000;">{{"   ".$pro->sales_number}} <span style="color: #bbb;">فروخته شده</span></a>
           </p>
+            
         </div>
         <?php if ($pro->discount != 0): ?>
         <div class="text py-3 pb-4 px-3 text-center">
@@ -98,7 +97,13 @@
             <?php endif; ?>
           </div>
         </div>
-        <p><a class="btn btn-black py-3 px-5 add-to-cart" data-id="{{$pro->id}}">اضافه به سبد خرید </a></p>
+          @if(Auth::check())
+            <p><a class="btn btn-black py-3 px-5 add-to-cart" data-id="{{$pro->id}}">اضافه به سبد خرید </a><br></p>
+            <p><a class="btn btn-black py-3 px-5 add-to-wish" data-id="{{$pro->id}}">اضافه به علاقمندی‌ها</a></p>
+          @else
+            <p><a class="text-danger mb-5" data-id="{{$pro->id}}">برای خرید این محصول ابتدا وارد شوید</a><br></p>
+          @endif
+          
       </div>
 
 
@@ -141,7 +146,7 @@
 
                   <div class="form-group">
                       <label for="message">پیام</label>
-                      <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                      <textarea name="comment" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
 
 

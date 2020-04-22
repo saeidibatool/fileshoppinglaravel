@@ -80,6 +80,7 @@ class CategoryController extends Controller
             //   array_push($pros, $product);
             // }
           }
+//          $pros = (object) $pros;
           // foreach ($pros as $pro) {
           //   echo $pro->name."<br>";
           // }
@@ -89,6 +90,7 @@ class CategoryController extends Controller
         }else{
           $pros = Product::where('category_id', $cat->id);
         }
+          $pros = $pros->paginate(10);die;
         var_dump($pros);die;
         $products = Product::search($request->all(), $pros);
         return view('site.search', compact('products'));

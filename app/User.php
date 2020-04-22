@@ -46,6 +46,10 @@ class User extends Authenticatable
     public function article(){
         return $this->hasMany(Article::class);
     }
+    
+    public function favorite(){
+      return $this->hasMany(Favorite::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.

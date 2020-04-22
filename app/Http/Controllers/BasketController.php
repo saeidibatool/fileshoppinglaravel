@@ -47,7 +47,6 @@ class BasketController extends Controller
         if(Basket::where([
           ['user_id','=',auth()->user()->id],
           ['product_id','=',$product->id],
-          ['status','=','0']
           ])->get()->count() == 0){
             Basket::create([
               'user_id'=>auth()->user()->id,

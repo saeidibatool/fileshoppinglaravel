@@ -36,6 +36,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
       
        $this->validate(request(),[
       ]);
@@ -55,7 +56,7 @@ class CommentController extends Controller
           $rating->rating = $request->rate;
           $rating->user_id = $id;
           $product->ratings()->save($rating);
-          return back()->with('success','ذخیره  نظروامتیاز شما انجام شد');
+          return back()->with('success','ذخیره  نظر و امتیاز شما انجام شد');
       }
       //===== comment =========
       if($request->comment){

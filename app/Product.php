@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use willvincent\Rateable\Rateable;
 // use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
+    use Rateable;
   // use Searchable;
   protected $fillable = [
       'name', 'producer_id', 'category_id', 'type_id', 'price', 'status', 'special',
@@ -25,6 +27,10 @@ class Product extends Model
   public function basket(){
       return $this->hasMany(Basket::class);
   }
+    
+    public function favorite(){
+      return $this->hasMany(Favorite::class);
+    }
   // public function comment(){
   //     return $this->hasMany(Comment::class);
   // }
@@ -57,7 +63,7 @@ class Product extends Model
     if(!empty($products)){
       $product = $product->paginate(10);
     }
-    dd($product);
+    // dd($product);
     return $product;
   }
 }

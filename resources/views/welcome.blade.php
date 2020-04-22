@@ -38,7 +38,7 @@
                     <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
                         <span class="flaticon-award"></span>
                     </div>
-                    <div class="media-body">
+                    <div class="">
                         <h3 class="heading">کیفیت برتر</h3>
                         <span>محصولات با کیفیت</span>
                     </div>
@@ -49,7 +49,7 @@
                     <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
                         <span class="flaticon-customer-service"></span>
                     </div>
-                    <div class="media-body">
+                    <div class="">
                         <h3 class="heading">پشتیبانی</h3>
                         <span>پشتیبانی 24 ساعته</span>
                     </div>

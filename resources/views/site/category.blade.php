@@ -30,7 +30,7 @@
     <div class="" >
 
       <?php $i = 1; ?>
-      <div class="row tab_content" id="tab-cat{{$i}}">
+      <div class="tab_content" id="tab-cat{{$i}}">
         <?php foreach ($pros as $pro): ?>
           <div class="col-md-6 col-lg-3 ftco-animate">
             <div class="product">
@@ -74,7 +74,7 @@
         <?php foreach ($c as $category): ?>
           <?php $i+=1; ?>
           <?php $products = App\Product::where('category_id',$category->id)->get();?>
-          <div class="row tab_content" id="tab-cat{{$i}}">
+          <div class="tab_content" id="tab-cat{{$i}}">
             <?php foreach ($products as $pro): ?>
               <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
@@ -117,6 +117,8 @@
 
 
     </div>
+    
+  </div>
     <div class="row mt-5">
       <div class="col text-center">
         <div class="block-27">
@@ -132,7 +134,6 @@
         </div>
       </div>
     </div>
-  </div>
 </section>
 
 

@@ -49,17 +49,17 @@ class ProductController extends Controller
     public function show(Product $pro)
     {
       $comments = $pro->comments->where('status','1');
-      // dd($comment);
       $rates = $pro->ratings;
-      // dd($rates);
-      $rating = 0;
-      if(!empty($rates)){
-        foreach ($rates as $rate) {
-          $rating += $rate->rating;
-        }
-        $rating /= count($rates);
-      }
-      // dd($rating);
+//       dd($rates);
+        $rating = $pro->averageRating;
+//      $rating = 0;
+//      if(!empty($rates)){
+//        foreach ($rates as $rate) {
+//          $rating += $rate->rating;
+//        }
+//        $rating /= count($rates);
+//      }
+//       dd($rating);
 
 
       $mortabet = [];

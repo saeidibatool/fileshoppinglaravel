@@ -32,12 +32,14 @@
                           <?php
                             $discount = 0;
                             $sum = 0;
+                            $ids = [];
                           ?>
                           <?php foreach ($baskets as $basket): ?>
                             <?php
                               $product = App\Product::find($basket->product_id);
                               $sum += $product->price;
                               $discount += $product->discount/100*$product->price;
+                                array_push($ids, $basket->id)
                             ?>
 
                             <tr class="text-center">
@@ -104,7 +106,7 @@
                         <span>{{$sum - $discount}} تومان</span>
                     </p>
                 </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">پرداخت</a></p>
+                <p><a href="{{route('factor.create', ['request'=>$ids])}}" class="btn btn-primary py-3 px-4">پرداخت</a></p>
             </div>
         </div>
     </div>
