@@ -47,8 +47,8 @@ class CategoryController extends Controller
      */
     public function show(Category $cat, Request $request)
     {
+      // dd($request->all());
       $c = Category::where('chid',$cat->id)->get();
-
 
       if(empty($request->all())){
         if($cat->chid == 0){
@@ -66,17 +66,30 @@ class CategoryController extends Controller
         return view('site.category' ,compact('pros','cat', 'c'));
       }else{
         if($cat->chid == 0){
+          // dd("hi");
+          // $pros = [];
           $pros = (object)[];
+
           foreach($c as $item)
           {
             $products = Product::where('category_id',$item->id);
+
             $pros = (object) array_merge((array) $pros, (array) $products);
             // dd($pros);
+            // foreach ($products as $product) {
+            //   array_push($pros, $product);
+            // }
           }
+          // foreach ($pros as $pro) {
+          //   echo $pro->name."<br>";
+          // }
+          // die;
+          // $pros = $pros->get();
+          // dd($pros);
         }else{
           $pros = Product::where('category_id', $cat->id);
         }
-        // dd($pros);
+        var_dump($pros);die;
         $products = Product::search($request->all(), $pros);
         return view('site.search', compact('products'));
       }

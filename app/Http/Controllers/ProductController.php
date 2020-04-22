@@ -45,12 +45,37 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+
     public function show(Product $pro)
     {
-      // dd($pro);
-         //=======variabel header and aside ===========================
+      $comments = $pro->comments->where('status','1');
+      // dd($comment);
+      $rates = $pro->ratings;
+      // dd($rates);
+      $rating = 0;
+      if(!empty($rates)){
+        foreach ($rates as $rate) {
+          $rating += $rate->rating;
+        }
+        $rating /= count($rates);
+      }
+      // dd($rating);
 
-         return view('site.product',compact('pro'));
+
+      $mortabet = [];
+      $ids = [];
+      $tags = $pro->tags()->get();
+      foreach($tags as $val){
+        $products = $val->products()->get();
+        foreach ($products as $product) {
+          $ids = array_column($mortabet, 'id');
+          if(!in_array($product->id, $ids) && ($product->id != $pro->id)){
+            array_push($ids, $product->id);
+            array_push($mortabet, $product);
+          }
+        }
+      }
+       return view('site.product',compact('pro','mortabet', 'comments', 'rating'));
     }
 
     /**

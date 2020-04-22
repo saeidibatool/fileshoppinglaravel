@@ -25,27 +25,39 @@ class Product extends Model
   public function basket(){
       return $this->hasMany(Basket::class);
   }
-  public function comment(){
-      return $this->hasMany(Comment::class);
-  }
-  public function rating(){
-      return $this->hasMany(Rating::class);
-  }
+  // public function comment(){
+  //     return $this->hasMany(Comment::class);
+  // }
+  // public function rating(){
+  //     return $this->hasMany(Rating::class);
+  // }
   public function factor(){
       return $this->belongsToMany(Factor::class);
   }
 
+  public function comments()
+  {
+      return $this->morphMany('App\Comment',"commentable");
+  }
+
+  public function tags()
+  {
+      return $this->morphToMany(Tag::class,"taggable");
+  }
+
 
   public static function search($data, $products){
+    // dd($products->get());
     if(sizeof($data) > 0){
       if(array_key_exists('name', $data)){
+        // dd("hi");
         $product = $products->where('name','like','%'.$data['name'].'%');
       }
     }
     if(!empty($products)){
       $product = $product->paginate(10);
     }
-    // dd($product);
+    dd($product);
     return $product;
   }
 }

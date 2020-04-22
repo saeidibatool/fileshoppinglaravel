@@ -23,6 +23,9 @@ Route::group(['middleware'=>['auth','UserLevel']],function(){
 });
 Route::resource('cat', 'CategoryController');
 Route::resource('pro', 'ProductController');
+Route::resource('commen','CommentController');
+Route::resource('contact','ContactController');
+
 
 //Ajax Routes Start
 Route::group([], function(){
