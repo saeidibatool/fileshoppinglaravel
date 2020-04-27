@@ -65,14 +65,18 @@
                     <img src="/{{$product->image}}" alt="تصویر محصول" style="width:50px; height:50px">
                   </td>
                   <td>
-                      <a href="{{route('product.edit', ['product'=>$product->id])}}" type="button" class="btn btn-block btn-warning">ویرایش</a>
+                      @can('product_edit')
+                        <a href="{{route('product.edit', ['product'=>$product->id])}}" type="button" class="btn btn-block btn-warning">ویرایش</a>
+                      @endcan
                   </td>
                   <td>
-                    <form class="" action="{{route('product.destroy', ['product'=>$product->id])}}" method="post">
-                      {{csrf_field()}}
-                      {{method_field('delete')}}
-                      <button type="submit" class="btn btn-block btn-danger">حذف</button>
-                    </form>
+                      @can('product_delete')
+                        <form class="" action="{{route('product.destroy', ['product'=>$product->id])}}" method="post">
+                          {{csrf_field()}}
+                          {{method_field('delete')}}
+                          <button type="submit" class="btn btn-block btn-danger">حذف</button>
+                        </form>
+                      @endcan
                   </td>
                 </tr>
               <?php endforeach; ?>

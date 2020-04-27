@@ -59,16 +59,19 @@
                     <img src="/{{$post->image}}" alt="{{$post->title}}" style="width:50px; height:50px">
                   </td>
                   <td>
-                      <a href="{{route('post.edit', ['post'=>$post->id])}}" type="button" class="btn btn-block btn-warning">ویرایش</a>
+                      @can('post_edit')
+                        <a href="{{route('post.edit', ['post'=>$post->id])}}" type="button" class="btn btn-block btn-warning">ویرایش</a>
+                      @endcan
                   </td>
                   <td>
 
-
-                    <form class="" action="{{route('post.destroy', ['post'=>$post->id])}}" method="post">
-                      {{csrf_field()}}
-                      {{method_field('delete')}}
-                      <button type="submit" class="btn btn-block btn-danger">حذف</button>
-                    </form>
+                      @can('post_delete')
+                        <form class="" action="{{route('post.destroy', ['post'=>$post->id])}}" method="post">
+                          {{csrf_field()}}
+                          {{method_field('delete')}}
+                          <button type="submit" class="btn btn-block btn-danger">حذف</button>
+                        </form>
+                      @endcan
 
                   </td>
                 </tr>

@@ -47,14 +47,18 @@
                   <td>{{$user->email}}
                   </td>
                   <td>
-                      <a href="{{route('user.edit', ['user'=>$user->id])}}" type="button" class="btn btn-block btn-warning">مدیریت سطح دسترسی</a>
+                      @can('user_edit')
+                        <a href="{{route('user.edit', ['user'=>$user->id])}}" type="button" class="btn btn-block btn-warning">مدیریت سطح دسترسی</a>
+                      @endcan
                   </td>
                   <td>
-                    <form class="" action="{{route('user.destroy', ['user'=>$user->id])}}" method="post">
-                      {{csrf_field()}}
-                      {{method_field('delete')}}
-                      <button type="submit" class="btn btn-block btn-danger">حذف</button>
-                    </form>
+                      @can('user_delete')
+                        <form class="" action="{{route('user.destroy', ['user'=>$user->id])}}" method="post">
+                          {{csrf_field()}}
+                          {{method_field('delete')}}
+                          <button type="submit" class="btn btn-block btn-danger">حذف</button>
+                        </form>
+                      @endcan
                   </td>
                 </tr>
               <?php endforeach; ?>

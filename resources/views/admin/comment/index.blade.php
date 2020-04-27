@@ -55,16 +55,19 @@
                   <td class="sorting_1">{{$comment->comment}}</td>
                   
                   <td>
-                      <a href="{{route('comment.edit', ['comment'=>$comment->id])}}" type="button" class="btn btn-block btn-success">تایید نظر</a>
+                      @can('comment_confirm')
+                        <a href="{{route('comment.edit', ['comment'=>$comment->id])}}" type="button" class="btn btn-block btn-success">تایید نظر</a>
+                      @endcan
                   </td>
                   <td>
 
-
-                    <form class="" action="{{route('comment.destroy', ['comment'=>$comment->id])}}" method="post">
-                      {{csrf_field()}}
-                      {{method_field('delete')}}
-                      <button type="submit" class="btn btn-block btn-danger">حذف</button>
-                    </form>
+                      @can('comment_delete')
+                        <form class="" action="{{route('comment.destroy', ['comment'=>$comment->id])}}" method="post">
+                          {{csrf_field()}}
+                          {{method_field('delete')}}
+                          <button type="submit" class="btn btn-block btn-danger">حذف</button>
+                        </form>
+                      @endcan
 
                   </td>
                 </tr>
