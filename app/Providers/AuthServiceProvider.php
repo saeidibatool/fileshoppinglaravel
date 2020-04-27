@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Product;
+use App\Permission;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+//        Product::class=>'App\Policies\ProductPolicy',
     ];
 
     /**
@@ -21,10 +24,21 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    
+    public function getPermissions(){
+        return Permission::with('role')->get();
+    }
+    
     public function boot()
     {
         $this->registerPolicies();
-
+        $permissions = $this->getPermissions();
+        foreach($permissions as $permission){
+            Gate::define($permission->en_name, function
+                         ($user) use ($permission){
+                             return $user->hasRole($permission->role);
+                         });
+        }
         //
     }
 }

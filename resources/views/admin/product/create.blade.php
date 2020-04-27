@@ -42,7 +42,14 @@
             <label for="exampleInputPassword1">تخفیف</label>
             <input name="discount" type="text" class="form-control" id="exampleInputPassword1"  value="{{old('discount')}}">
           </div>
-
+            <div class="form-group">
+            <label for="exampleInputPassword1">برچسب‌ها</label>
+             <select class="form-control" name="tag_id[]" multiple>
+               <?php foreach ($tags as $tag): ?>
+                 <option value="{{$tag->id}}">{{$tag->name}}</option>
+               <?php endforeach; ?>
+             </select>
+          </div>
           <div class="form-group">
             <label for="exampleInputFile">تصویر محصول</label>
             <input name="image" type="file" id="exampleInputFile">
@@ -58,6 +65,7 @@
           <script type="text/javascript">
             CKEDITOR.replace( 'body' );
          </script>
+            
 
         </div>
         <!-- /.box-body -->

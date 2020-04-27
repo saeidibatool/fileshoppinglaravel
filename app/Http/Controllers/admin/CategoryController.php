@@ -97,7 +97,7 @@ class CategoryController extends AdminController
       if($request['image']){
         $file = $request['image'];
         $image = $this->ImageUploader($file,'uploads/');
-        unlink($category->image);
+//        unlink($category->image);
       }else{
         $image = $category->image;
       }

@@ -9,25 +9,26 @@
     <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
       <div class="row">
         <div class="col-sm-6">
-          <div class="dataTables_length" id="example1_length">
-            <label>Show
-              <select name="example1_length" aria-controls="example1" class="form-control input-sm">
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-               entries
-             </label>
-           </div>
-         </div>
-         <div class="col-sm-6">
-           <div id="example1_filter" class="dataTables_filter">
-             <label>Search:
-               <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1">
-             </label>
-           </div>
-         </div>
+          
+         <form class="form-inline nav-link">
+            {{csrf_field()}}
+             <div class="form-group">
+                <label for="exampleInputPassword1">مرتب‌سازی بر اساس</label>
+                 <select class="form-control" name="item">
+                     <option value="sales_number">تعداد فروش</option>
+                     <option value="download_number">تعداد دانلود</option>
+                     <option value="created_at">زمان اضافه شدن</option>
+                 </select>
+              </div>
+             <div class="form-group">
+                <label for="exampleInputPassword1">مرتب‌سازی به صورت</label>
+                 <select class="form-control" name="method">
+                     <option value="asc">صعودی</option>
+                     <option value="desc">نزولی</option>
+                 </select>
+              </div>
+             <button class="btn btn-primary btn-sm" type="submit">جستجو</button>
+          </form>
        </div>
        <div class="row">
          <div class="col-sm-12">

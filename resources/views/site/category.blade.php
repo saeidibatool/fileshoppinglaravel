@@ -18,7 +18,7 @@
       <div class="col-md-10 mb-5 text-center " >
         <ul class="product-category" id="sub-cat">
           <?php $i = 1; ?>
-          <li><a href="#tab-cat{{$i}}" >{{$cat->fa_name}}</a></li>
+          <li><a href="#tab-cat{{$i}}">{{$cat->fa_name}}</a></li>
 
           <?php foreach ($c as $category): ?>
             <?php $i += 1; ?>
@@ -53,13 +53,15 @@
                 </div>
                 <div class="bottom-area d-flex px-3">
                   <div class="m-auto d-flex">
-                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                    <a href="#" class="d-flex justify-content-center align-items-center text-center">
                       <span><i class="ion-ios-menu"></i></span>
                     </a>
-                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1 add-to-cart" 
+                       data-id="{{$pro->id}}">
                       <span><i class="ion-ios-cart"></i></span>
                     </a>
-                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                    <a href="#" class="heart d-flex justify-content-center align-items-center add-to-wish"
+                       data-id="{{$pro->id}}">
                       <span><i class="ion-ios-heart"></i></span>
                     </a>
                   </div>
@@ -100,10 +102,12 @@
                         <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                           <span><i class="ion-ios-menu"></i></span>
                         </a>
-                        <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                        <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1 add-to-cart"
+                           data-id="{{$pro->id}}">
                           <span><i class="ion-ios-cart"></i></span>
                         </a>
-                        <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                        <a href="#" class="heart d-flex justify-content-center align-items-center add-to-wish"
+                           data-id="{{$pro->id}}">
                           <span><i class="ion-ios-heart"></i></span>
                         </a>
                       </div>
@@ -119,21 +123,7 @@
     </div>
     
   </div>
-    <div class="row mt-5">
-      <div class="col text-center">
-        <div class="block-27">
-          <ul>
-            <li><a href="#">&lt;</a></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&gt;</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    
 </section>
 
 

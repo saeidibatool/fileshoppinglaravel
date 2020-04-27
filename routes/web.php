@@ -25,6 +25,9 @@ Route::resource('cat', 'CategoryController');
 Route::resource('pro', 'ProductController');
 Route::resource('commen','CommentController');
 Route::resource('contact','ContactController');
+Route::resource('postt','PostController'); 
+Route::resource('comment-post','CommentpostController');  
+
 
 
 //Ajax Routes Start
@@ -33,6 +36,7 @@ Route::group([], function(){
 //  Route::get('/product', 'BasketController@store')->middleware('auth');
     Route::resource('/favorite', 'FavoriteController')->middleware('auth');
     Route::resource('/factor', 'FactorController')->middleware('auth');
+    Route::resource('/support', 'SupportController')->middleware('auth');
     Route::get('/download/{id}', 'DownloadController@download');
 });
 
@@ -42,19 +46,28 @@ Route::group([], function(){
 
 //==================Start Backend Controllers======================
 Route::group(['namespace'=>'admin','middleware'=>['auth','UserLevel'],'prefix'=>'/admin'],function(){
-  Route::resource('/product', 'ProductController');
-  Route::resource('/role', 'RoleController');
-  Route::resource('/user', 'UserController');
-  Route::resource('/permission', 'PermissionController');
-  Route::resource('/category', 'CategoryController');
-  Route::resource('/producer', 'ProducerController');
-  Route::resource('/slider', 'SliderController');
-  Route::resource('/filter', 'FilterController');
-  Route::resource('/sliderparent', 'SliderparentController');
+    Route::resource('/product', 'ProductController');
+    Route::resource('/role', 'RoleController');
+    Route::resource('/user', 'UserController');
+    Route::resource('/permission', 'PermissionController');
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/producer', 'ProducerController');
+    Route::resource('/slider', 'SliderController');
+    Route::resource('/filter', 'FilterController');
+    Route::resource('/sliderparent', 'SliderparentController');
+    Route::resource('/tag', 'TagController');
+    Route::resource('/comment', 'CommentController');
+    Route::resource('/post', 'PostController');
+    Route::resource('/contact', 'ContactController');
+    Route::resource('/support', 'SupportController');
+    
+});
+Route::group(['middleware'=>['auth']],function(){
+    Route::get('/userpanel', 'admin\UserController@userPanel')->name('userpanel');
+    Route::get('/useredit', 'admin\UserController@userEdit')->name('useredit');
+    Route::post('/userupdate', 'admin\UserController@userUpdate')->name('userupdate');
 });
 
-Route::get('/userpanel', 'admin\UserController@userPanel')->name('userpanel');
-Route::get('/useredit', 'admin\UserController@userEdit')->name('useredit');
 
 
 //==================End Backend Controllers========================

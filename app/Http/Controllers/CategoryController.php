@@ -48,50 +48,28 @@ class CategoryController extends Controller
     public function show(Category $cat, Request $request)
     {
       // dd($request->all());
-      $c = Category::where('chid',$cat->id)->get();
-
+      
+        $c = Category::where('chid',$cat->id)->get();
+        
+        
       if(empty($request->all())){
         if($cat->chid == 0){
-          $pros=array();
-          foreach($c as $item)
-          {
-            $products = Product::where('category_id',$item->id)->get();
-            foreach ($products as $pro) {
-              array_push($pros, $pro);
-            }
-          }
+            $c = Category::where('chid',$cat->id)->get();
+            $cats = Category::where('chid',$cat->id)->pluck('id');
+            $pros = Product::whereIn('category_id', $cats)->get();
+//            dd($pros);
         }else{
-          $pros = Product::where('category_id', $cat->id)->get();
+          $pros = Product::where('category_id', $cat->id)->paginate(10);
         }
         return view('site.category' ,compact('pros','cat', 'c'));
       }else{
         if($cat->chid == 0){
-          // dd("hi");
-          // $pros = [];
-          $pros = (object)[];
-
-          foreach($c as $item)
-          {
-            $products = Product::where('category_id',$item->id);
-
-            $pros = (object) array_merge((array) $pros, (array) $products);
-            // dd($pros);
-            // foreach ($products as $product) {
-            //   array_push($pros, $product);
-            // }
-          }
-//          $pros = (object) $pros;
-          // foreach ($pros as $pro) {
-          //   echo $pro->name."<br>";
-          // }
-          // die;
-          // $pros = $pros->get();
-          // dd($pros);
+            $c = Category::where('chid',$cat->id)->pluck('id');
+            $pros = Product::whereIn('category_id', $c);
         }else{
           $pros = Product::where('category_id', $cat->id);
         }
-          $pros = $pros->paginate(10);die;
-        var_dump($pros);die;
+          
         $products = Product::search($request->all(), $pros);
         return view('site.search', compact('products'));
       }

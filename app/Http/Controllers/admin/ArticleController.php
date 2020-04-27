@@ -15,9 +15,10 @@ class ArticleController extends AdminController
      */
     public function index()
     {
-      $articles = Article::get()->all());
-      // $categories = Category::latest()->paginate(10);
-      return view('admin.article.index', compact('articles'));
+        
+    //   $articles = Article::get();
+    //   $categories = Category::latest()->paginate(10);
+    //   return view('admin.article.index', compact('articles'));
     }
 
     /**

@@ -42,8 +42,9 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i>لیست کاربران</a></li>
-          <li><a href="{{route('user.create')}}"><i class="fa fa-circle-o"></i>افزودن کاربر جدید</a></li>
+            @can('user_list')
+                <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i>لیست کاربران</a></li>
+            @endcan
 
           <!-- roles -->
           <li><a href="{{route('role.index')}}"><i class="fa fa-circle-o"></i>لیست نقش‌ها</a></li>
@@ -62,17 +63,68 @@
           </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="{{route('product.index')}}"><i class="fa fa-circle-o"></i>لیست محصولات</a></li>
-            <li><a href="{{route('product.create')}}"><i class="fa fa-circle-o"></i>افزودن محصول جدید</a></li>
+            @can('product_list')
+                <li><a href="{{route('product.index')}}"><i class="fa fa-circle-o"></i>لیست محصولات</a></li>
+            @endcan
+            @can('product_create')
+                <li><a href="{{route('product.create')}}"><i class="fa fa-circle-o"></i>افزودن محصول جدید</a></li>
+            @endcan
+            
             <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i>لیست دسته‌بندی‌ها</a></li>
             <li><a href="{{route('category.create')}}"><i class="fa fa-circle-o"></i>افزودن دسته‌بندی جدید</a></li>
             <li><a href="{{route('producer.index')}}"><i class="fa fa-circle-o"></i>لیست تولیدکننده‌ها</a></li>
             <li><a href="{{route('producer.create')}}"><i class="fa fa-circle-o"></i>افزودن تولیدکننده جدید</a></li>
         </ul>
-
-
-
       </li>
+    
+    <li class="treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>مدیریت تگ‌ها</span>
+          <span class="pull-left-container">
+            <i class="fa fa-angle-right pull-left"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{{route('tag.index')}}"><i class="fa fa-circle-o"></i>لیست تگ‌ها</a></li>
+            <li><a href="{{route('tag.create')}}"><i class="fa fa-circle-o"></i>افزودن تگ جدید</a></li>
+        </ul>
+      </li>
+    
+    <li class="treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>مدیریت نظرات</span>
+          <span class="pull-left-container">
+            <i class="fa fa-angle-right pull-left"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+            @can('comment_list')
+                <li><a href="{{route('comment.index')}}"><i class="fa fa-circle-o"></i>مشاهده نظرات</a></li>
+            @endcan
+            <li><a href="{{route('contact.index')}}"><i class="fa fa-circle-o"></i>مشاهده پیام‌های ارتباط با ما</a></li>
+            <li><a href="{{route('support.index')}}"><i class="fa fa-circle-o"></i>مشاهده پیام‌های پشتیبانی</a></li>
+        </ul>
+        
+      </li>
+    <li class="treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>مدیریت پست‌ها</span>
+          <span class="pull-left-container">
+            <i class="fa fa-angle-right pull-left"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+            @can('post_list')
+                <li><a href="{{route('post.index')}}"><i class="fa fa-circle-o"></i>لیست پست‌ها</a></li>
+            @endcan
+            @can('post_create')
+                <li><a href="{{route('post.create')}}"><i class="fa fa-circle-o"></i>افزودن پست جدید</a></li>
+            @endcan
+        </ul>
+        
+      </li>
+    
+    
       <li class="treeview">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>مدیریت فیلتر</span>

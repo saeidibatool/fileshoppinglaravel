@@ -1,19 +1,10 @@
-@extends('layouts.mastermain')
-
+@extends('layouts.usersidebar')
+                
 @section('content')
 
-<div class="hero-wrap hero-bread" style="background-image: url('/pics/basket.jpg'); background-size:auto, 100%;">
-    <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-            <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">خانه</a></span></p>
-                <h1 class="mb-0 bread">سبد خرید</h1>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="sidebar-box ftco-animate col-9">
 
-<section class="ftco-section ftco-cart">
+    <section class="ftco-section ftco-cart">
     <div class="container">
         <div class="row">
             <div class="col-md-12 ftco-animate">
@@ -111,4 +102,5 @@
         </div>
     </div>
 </section>
+</div>
 @endsection

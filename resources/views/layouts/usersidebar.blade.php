@@ -6,7 +6,7 @@
  <body  dir="rtl" class="goto-here">
 <div class="wrapper-wide">
 @include('layouts.partials.header')
-    <div class="hero-wrap hero-bread" style="background-image: url('pics/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('/pics/profile 3.jpg');">
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
@@ -19,13 +19,15 @@
     <div class="ftco-section ftco-degree-bg">
         <div class="container">
             <div class="row">
-                <div class="sidebar-box ftco-animate col-3" style="background-color: #87a65d;;">
+                <div class="sidebar-box ftco-animate col-3 bg-primary">
                     <h3 class="heading" style=" text-align: center" >{{auth()->user()->name}}</h3>
                         <ul class="categories">
                             <li><a href="userpanel">اطلاعات کاربری </a></li>
                             <li><a href="useredit">ویرایش اطلاعات </a></li>
-                            <li><a href="#">سبد خرید </a></li>
-                            <li><a href="#">فاکتور ها </a></li>
+                            <li><a href="/basket">سبد خرید </a></li>
+                            <li><a href="/favorite">لیست علاقمندی‌ها</a></li>
+                            <li><a href="/factor">خریدهای انجام شده</a></li>
+                            <li><a href="/support">گزارش مشکلات</a></li>
                             <li>
                                         @auth
                                     <a href="{{ route('logout') }}"
@@ -45,7 +47,7 @@
         </div> 
 </div>
     @include('layouts.partials.footer')
-@include('layouts.partials.footer-scripts')
+    @include('layouts.partials.footer-scripts')
 </div>
  </body>
 </html>

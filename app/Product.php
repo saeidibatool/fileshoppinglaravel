@@ -31,12 +31,7 @@ class Product extends Model
     public function favorite(){
       return $this->hasMany(Favorite::class);
     }
-  // public function comment(){
-  //     return $this->hasMany(Comment::class);
-  // }
-  // public function rating(){
-  //     return $this->hasMany(Rating::class);
-  // }
+
   public function factor(){
       return $this->belongsToMany(Factor::class);
   }
@@ -53,17 +48,14 @@ class Product extends Model
 
 
   public static function search($data, $products){
-    // dd($products->get());
     if(sizeof($data) > 0){
       if(array_key_exists('name', $data)){
-        // dd("hi");
         $product = $products->where('name','like','%'.$data['name'].'%');
       }
     }
     if(!empty($products)){
       $product = $product->paginate(10);
     }
-    // dd($product);
     return $product;
   }
 }

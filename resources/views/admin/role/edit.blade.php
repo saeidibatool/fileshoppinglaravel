@@ -29,6 +29,7 @@
           <div class="form-group">
             <label for="exampleInputPassword1">دسترسی‌ها</label>
              <select class="form-control" name="permission_id[]" multiple>
+                 <option value=""></option>
                <?php foreach ($permissions as $permission): ?>
                  <?php if ($role_permissions->contains('en_name',$permission->en_name)): ?>
                    <option value="{{$permission->id}}" selected>{{$permission->fa_name}}</option>

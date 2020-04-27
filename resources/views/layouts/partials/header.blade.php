@@ -66,36 +66,47 @@
 
                 </li>
                 <li class="nav-item"><a href="about.html" class="nav-link">درباره ما</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">وبلاگ</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">تماس با ما</a></li>
+                <li class="nav-item"><a href="{{route('postt.index')}}" class="nav-link">وبلاگ</a></li>
+                <li class="nav-item"><a href="{{ Route('contact.index') }}" class="nav-link">تماس با ما</a></li>
                 @guest
                   <li class="nav-item"><a class="nav-link" href="{{route('login')}}">ورود/ثبت نام</a></li>
                 @endguest
 
-                 <li class="nav-item">
-                  @auth
-                    <a class="nav-link" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        خروج
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                  @endauth
-                </li>
-
                 @auth
-                <?php if ($baskets != null && count($baskets) > 0): ?>
-                  <li class="nav-item cta cta-colored float-left">
-                    <a href="/basket" id="shop-cart" class="nav-link">
-                      <span class="icon-shopping_cart"></span>
-                      [{{count($baskets)}}]
-                    </a>
-                  </li>
-                <?php endif; ?>
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="userpanel">
+                            خانه
+                        </a>
+                    </li>
+                
+                
+                     <li class="nav-item">
+
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            خروج
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                    </li>
+
+
+                    <?php if ($baskets != null && count($baskets) > 0): ?>
+                      <li class="nav-item cta cta-colored float-left">
+                        <a href="/basket" id="shop-cart" class="nav-link">
+                          <span class="icon-shopping_cart"></span>
+                          [{{count($baskets)}}]
+                        </a>
+                      </li>
+                    <?php endif; ?>
                 @endauth
+
+                
                 <li class="nav-item cta cta-colored float-left">
                   <form class="form-inline nav-link">
                     {{csrf_field()}}

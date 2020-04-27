@@ -30,7 +30,7 @@
             <label for="exampleInputPassword1">نقش</label>
              <select class="form-control" name="roles_id[]" multiple>
                <?php foreach ($roles as $role): ?>
-                 <?php if ($user_roles->contains('en_name',$role->en_name)): ?>
+                 <?php if ($user_roles->contains('id',$role->id)): ?>
                    <option value="{{$role->id}}" selected>{{$role->fa_name}}</option>
                  <?php else: ?>
                    <option value="{{$role->id}}">{{$role->fa_name}}</option>

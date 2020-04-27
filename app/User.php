@@ -50,6 +50,13 @@ class User extends Authenticatable
     public function favorite(){
       return $this->hasMany(Favorite::class);
     }
+    
+    public function post(){
+        return $this->hasMany(Post::class);
+    }
+    public function support(){
+        return $this->hasMany(Support::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -68,4 +75,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
+    public function hasRole($roles){
+//        dd($roles);
+        if(is_string($roles)){
+            return $this->role->contains('en_name', $roles);
+        }else{
+            foreach($roles as $role){
+                if($this->hasRole($role->en_name)){
+                    return true;
+                }
+            }   
+        }
+        
+    }
 }

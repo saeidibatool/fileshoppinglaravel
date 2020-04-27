@@ -5,10 +5,10 @@
 <!-- ............................................. -->
 
 
-    <div class="container">
+    <div class="container ">
 
         <div class="row">
-            <div class="col-md-12 ftco-animate">
+            <div class="col-md-12 ftco-animate ">
                 <h3  class="tit">مشخصات</h3>
             </div>
             <div class="col-md-12 ftco-animate titr">
@@ -21,6 +21,12 @@
             <h5 class="tit">ایمیل</h5>
                 <div class="info">
                 {{auth::user()->email}}
+                </div>
+            </div>
+            <div class="col-md-12 ftco-animate titr">
+            <h5 class="tit">جنسیت</h5>
+                <div class="info">
+                {{auth::user()->gender->fa_name}}
                 </div>
             </div>
         </div>

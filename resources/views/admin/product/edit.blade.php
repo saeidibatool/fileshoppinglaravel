@@ -23,13 +23,13 @@
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">شرکت سازنده</label>
-             <select class="form-control" name="brand_id">
-               <?php foreach ($brands as $brand): ?>
-                 <?php if ($product->brand->name == $brand->name): ?>
-                   <option value="{{$brand->id}}" selected>{{$brand->name}}</option>
+            <label for="exampleInputPassword1">تولیدکننده</label>
+             <select class="form-control" name="producer_id">
+               <?php foreach ($producers as $producer): ?>
+                 <?php if ($product->producer->id == $producer->id): ?>
+                   <option value="{{$producer->id}}" selected>{{$producer->name}}</option>
                  <?php else: ?>
-                   <option value="{{$brand->id}}">{{$brand->name}}</option>
+                   <option value="{{$producer->id}}">{{$producer->name}}</option>
                  <?php endif; ?>
                <?php endforeach; ?>
              </select>
@@ -39,15 +39,28 @@
             <label for="exampleInputPassword1">دسته‌بندی</label>
              <select class="form-control" name="category_id">
                <?php foreach ($categories as $category): ?>
-                 <?php if ($product->category->title_fa == $category->title_fa): ?>
-                   <option value="{{$category->id}}" selected>{{$category->title_fa}}</option>
+                 <?php if ($product->category->id == $category->id): ?>
+                   <option value="{{$category->id}}" selected>{{$category->fa_name}}</option>
                  <?php else: ?>
-                   <option value="{{$category->id}}">{{$category->title_fa}}</option>
+                   <option value="{{$category->id}}">{{$category->fa_name}}</option>
                  <?php endif; ?>
                <?php endforeach; ?>
              </select>
           </div>
-
+            
+            <div class="form-group">
+            <label for="exampleInputPassword1">برچسب‌ها</label>
+             <select class="form-control" name="tag_id[]" multiple>
+               <?php foreach ($tags as $tag): ?>
+                 <?php if ($protag->contains('id',$tag->id)): ?>
+                   <option value="{{$tag->id}}" selected>{{$tag->name}}</option>
+                 <?php else: ?>
+                   <option value="{{$tag->id}}">{{$tag->name}}</option>
+                 <?php endif; ?>
+               <?php endforeach; ?>
+             </select>
+          </div>
+            
           <div class="form-group">
             <label for="exampleInputPassword1">قیمت محصول</label>
             <input name="price" type="text" class="form-control" id="exampleInputPassword1" value="{{$product->price}}">
@@ -58,7 +71,20 @@
           </div>
           <div class="form-group">
             <label for="exampleInputFile">تصویر محصول</label>
+              <div class="form-group">
+              <img src="/{{$product->image}}" alt="{{$product->name}}" style="height:100px; width:100px">
+            </div>
             <input name="image" type="file" id="exampleInputFile">
+
+          </div>
+            
+             
+
+            
+            <div class="form-group">
+            <label for="exampleInputFile">فایل محصول</label>
+              
+            <input name="file" type="file" id="exampleInputFile">
 
           </div>
           <div class="form-group">

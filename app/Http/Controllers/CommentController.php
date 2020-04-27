@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Product;
+use App\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -36,46 +37,77 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+        $id = $request['user_id'];
+        if($request['product_id']){
+                $product = Product::find($request['product_id']);
+              if($request->comment && $request['rate']){
+                  $comment = new Comment;
+                  $comment->user_id = $id;
+                  $comment->comment = $request['comment'];
+                  $comment->status = '0';
+                  $product->comments()->save($comment);
+
+                  $rating = new \willvincent\Rateable\Rating;
+                  $rating->rating = $request->rate;
+                  $rating->user_id = $id;
+                  $product->ratings()->save($rating);
+                  return back()->with('success','ذخیره  نظر و امتیاز شما انجام شد');
+              }
+              //===== comment =========
+              if($request->comment){
+                  $comment = new Comment;
+                  $comment->user_id = $id;
+                  $comment->comment = $request['comment'];
+                  $comment->status = '0';
+                  $product->comments()->save($comment);
+                  return back()->with('success','ذخیره  نظر شما انجام شد');
+              }
+
+              //==== rating ===========
+              if($request['rate']){
+                  $rating = new \willvincent\Rateable\Rating;
+                  $rating->rating = $request->rate;
+                  $rating->user_id = $id;
+                  $product->ratings()->save($rating);
+                  return back()->with('success','ذخیره  امتیاز شما انجام شد');
+              }
+        }elseif($request['post_id']){
+            $post = Post::find($request['post_id']);
+              if($request->comment && $request['rate']){
+                  $comment = new Comment;
+                  $comment->user_id = $id;
+                  $comment->comment = $request['comment'];
+                  $comment->status = '0';
+                  $post->comments()->save($comment);
+
+                  $rating = new \willvincent\Rateable\Rating;
+                  $rating->rating = $request->rate;
+                  $rating->user_id = $id;
+                  $post->ratings()->save($rating);
+                  return back()->with('success','ذخیره  نظر و امتیاز شما انجام شد');
+              }
+              //===== comment =========
+              if($request->comment){
+                  $comment = new Comment;
+                  $comment->user_id = $id;
+                  $comment->comment = $request['comment'];
+                  $comment->status = '0';
+                  $post->comments()->save($comment);
+                  return back()->with('success','ذخیره  نظر شما انجام شد');
+              }
+
+              //==== rating ===========
+              if($request['rate']){
+                  $rating = new \willvincent\Rateable\Rating;
+                  $rating->rating = $request->rate;
+                  $rating->user_id = $id;
+                  $post->ratings()->save($rating);
+                  return back()->with('success','ذخیره  امتیاز شما انجام شد');
+              }
+        }
       
-       $this->validate(request(),[
-      ]);
 
-      $id = $request['user_id'];
-
-      $product = Product::find($request['product_id']);
-
-      if($request->comment && $request['rate']){
-          $comment = new Comment;
-          $comment->user_id = $id;
-          $comment->comment = $request['comment'];
-          $comment->status = '0';
-          $product->comments()->save($comment);
-
-          $rating = new \willvincent\Rateable\Rating;
-          $rating->rating = $request->rate;
-          $rating->user_id = $id;
-          $product->ratings()->save($rating);
-          return back()->with('success','ذخیره  نظر و امتیاز شما انجام شد');
-      }
-      //===== comment =========
-      if($request->comment){
-          $comment = new Comment;
-          $comment->user_id = $id;
-          $comment->comment = $request['comment'];
-          $comment->status = '0';
-          $product->comments()->save($comment);
-          return back()->with('success','ذخیره  نظر شما انجام شد');
-      }
-
-      //==== rating ===========
-      if($request['rate']){
-          $rating = new \willvincent\Rateable\Rating;
-          $rating->rating = $request->rate;
-          $rating->user_id = $id;
-          $product->ratings()->save($rating);
-          return back()->with('success','ذخیره  امتیاز شما انجام شد');
-      }
+      
     }
 
     /**

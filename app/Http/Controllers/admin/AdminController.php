@@ -10,11 +10,10 @@ class AdminController extends Controller
   public function ImageUploader($file, $location){
     $filename = time()."-".$file->getClientOriginalName();
     $path = public_path("/".$location);
+//      dd($path);
     $file->move($path,$filename);
-
-    // $img=Image::make($files->getRealPath());
-    // $img->resize(200,150);
-    // $img->save($path."small-".$filename);
+//dd("ok");
+    
     return "$location".$filename;
 
   }
