@@ -24,7 +24,7 @@ Route::group(['middleware'=>['auth','UserLevel']],function(){
 Route::resource('cat', 'CategoryController');
 Route::resource('pro', 'ProductController');
 Route::resource('commen','CommentController');
-Route::resource('contact','ContactController');
+Route::resource('contactt','ContactController');
 Route::resource('postt','PostController'); 
 Route::resource('comment-post','CommentpostController');  
 

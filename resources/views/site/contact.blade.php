@@ -59,7 +59,7 @@
       </div>
       <div class="row block-9">
         <div class="col-md-6 order-md-last d-flex">
-          <form  action="{{route('contact.store') }}" method="POST" class="bg-white p-5 contact-form">
+          <form  action="{{route('contactt.store') }}" method="POST" class="bg-white p-5 contact-form">
             @csrf
             <div class="form-group">
               <input type="text" name="name" class="form-control" placeholder="نام">
