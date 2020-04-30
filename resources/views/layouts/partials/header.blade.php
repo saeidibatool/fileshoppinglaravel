@@ -65,7 +65,6 @@
                   </div>
 
                 </li>
-                <li class="nav-item"><a href="about.html" class="nav-link">درباره ما</a></li>
                 <li class="nav-item"><a href="{{route('postt.index')}}" class="nav-link">وبلاگ</a></li>
                 <li class="nav-item"><a href="{{ Route('contactt.index') }}" class="nav-link">تماس با ما</a></li>
                 @guest

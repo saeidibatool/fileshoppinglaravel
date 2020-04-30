@@ -18,17 +18,27 @@
                 <input name="name" type="text" class="form-control" value="{{auth::user()->name}}">
               </div>
             </div>
+                    
+            
             <div class="col-md-12 ftco-animate titr">
             <h5 class="tit"> جنسیت</h5>
-                @foreach ($genders as $gender)
-                <label class="container">{{$gender->fa_name}}
-                    @if(auth::user()->gender->id == $gender->id)
-                        <input type="radio" name="gender_id" value="{{$gender->id}}" checked>
-                    @else
-                        <input type="radio" name="gender_id" value="{{$gender->id}}">
-                     @endif
-                  </label>
-                @endforeach
+                @if(isset(auth::user()->gender_id))
+                    @foreach ($genders as $gender)
+                    <label class="container">{{$gender->fa_name}}
+                        @if(auth::user()->gender->id == $gender->id)
+                            <input type="checkbox" name="gender_id" value="{{$gender->id}}" checked>
+                        @else
+                            <input type="checkbox" name="gender_id" value="{{$gender->id}}">
+                         @endif
+                      </label>
+                    @endforeach
+                @else
+                    @foreach ($genders as $gender)
+                    <label class="container">{{$gender->fa_name}}
+                        <input type="checkbox" name="gender_id" value="{{$gender->id}}">
+                      </label>
+                    @endforeach
+                @endif
             </div>
             
             <div class="col-md-12 ftco-animate titr">

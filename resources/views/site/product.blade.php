@@ -123,7 +123,7 @@
             <?php foreach ($comments as $comment): ?>
               <li class="comment">
                   <div class="vcard bio">
-                      <img src="/pics/person_1.jpg" alt="Image placeholder">
+                      <img src="/{{$comment->user->image}}" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                       <h3>{{$comment->user->name}}</h3>

@@ -23,12 +23,14 @@
                 {{auth::user()->email}}
                 </div>
             </div>
-            <div class="col-md-12 ftco-animate titr">
-            <h5 class="tit">جنسیت</h5>
-                <div class="info">
-                {{auth::user()->gender->fa_name}}
+           @if(isset(auth::user()->gender_id))
+                <div class="col-md-12 ftco-animate titr">
+                <h5 class="tit">جنسیت</h5>
+                    <div class="info">
+                    {{auth::user()->gender->fa_name}}
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 
