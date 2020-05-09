@@ -49,10 +49,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $postt)
     {
         $cats = Category::where('chid', '!=', 0)->get();
         $latest = Post::latest()->paginate(3);
+        $post=$postt;
+//        dd($post);
         return view('site.weblog-detail',compact('post','latest','cats'));
     }
 

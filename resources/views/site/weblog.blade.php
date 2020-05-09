@@ -25,7 +25,7 @@
                     <?php  $comment = $item->comments->where('status','1'); ?>
                     <div class="col-md-12 d-flex ftco-animate">
                         <div class="blog-entry align-self-stretch d-md-flex">
-                            <a href="{{route('post.show',['post'=>$item->id])}}" class="block-20" style="background-image: url('{{$item->image}}');">
+                            <a href="{{route('postt.show',['postt'=>$item->id])}}" class="block-20" style="background-image: url('{{$item->image}}');">
                             </a>
                             <div class="text d-block pr-md-4">
                                 <div class="meta mb-3">
@@ -33,13 +33,13 @@
                                     <div><a href="#">{{$item->user->name}}</a></div>
                                     <div><a href="#" class="meta-chat"><span class="icon-chat"></span> {{count($comment)}}</a></div>
                                 </div>
-                                <h3 class="heading"><a href="{{route('post.show',['post'=>$item->id])}}">
+                                <h3 class="heading"><a href="{{route('postt.show',['postt'=>$item->id])}}">
                                {{$item->title}}
                             </a></h3>
                                 <p>
                                     {{ substr(strip_tags($item->description),0,200) }}{{strlen($item->description)>300 ? "..." : ""}}
                                 </p>
-                                <p><a href="{{route('post.show',['post'=>$item->id])}}" class="btn btn-primary py-2 px-3">بیشتر بخوانید</a>
+                                <p><a href="{{route('postt.show',['postt'=>$item->id])}}" class="btn btn-primary py-2 px-3">بیشتر بخوانید</a>
                                 </p>
                             </div>
                         </div>
@@ -67,10 +67,10 @@
                     <h3 class="heading">آخرین پست ها</h3>
                     @foreach ($latest as $item)
                     <div class="block-21 mb-4 d-flex">
-                        <a href="{{route('post.show',['post'=>$item->id])}}" class="blog-img ml-4" style="background-image: url(/{{$item->image}});"></a>
+                        <a href="{{route('postt.show',['postt'=>$item->id])}}" class="blog-img ml-4" style="background-image: url(/{{$item->image}});"></a>
                         <div class="text">
                             <h3 class="heading-1">
-                                <a href="{{route('post.show',['post'=>$item->id])}}">
+                                <a href="{{route('postt.show',['postt'=>$item->id])}}">
                                {{$item->title}}
                             </a>
                             </h3>

@@ -106,10 +106,11 @@
                                         <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                             <span><i class="ion-ios-menu"></i></span>
                                         </a>
-                                        <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1 add-to-cart" data-id="{{$favorite->id}}">
                                             <span><i class="ion-ios-cart"></i></span>
                                         </a>
-                                        <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        <a href="#" class="heart d-flex justify-content-center align-items-center add-to-wish"
+                                           data-id="{{$favorite->id}}">
                                             <span><i class="ion-ios-heart"></i></span>
                                         </a>
                                     </div>
@@ -173,10 +174,12 @@
                                 <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                     <span><i class="ion-ios-menu"></i></span>
                                 </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1 add-to-cart"
+                                   data-id="{{$bestseller->id}}">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                <a href="#" class="heart d-flex justify-content-center align-items-center add-to-wish"
+                                   data-id="{{$bestseller->id}}">
                                     <span><i class="ion-ios-heart"></i></span>
                                 </a>
                             </div>
